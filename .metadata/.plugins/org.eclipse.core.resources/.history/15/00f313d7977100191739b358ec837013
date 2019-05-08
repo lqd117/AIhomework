@@ -1,0 +1,7 @@
+
+public class MyNumPy {
+	public NumpyRandom random;
+	public MyNumPy(){
+		this.random = new NumpyRandom();
+	}
+}

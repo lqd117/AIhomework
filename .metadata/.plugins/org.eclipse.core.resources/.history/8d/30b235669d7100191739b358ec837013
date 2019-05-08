@@ -1,0 +1,19 @@
+
+public class MyNumPy {
+	public NumpyRandom random;
+	public MyNumPy(){
+		this.random = new NumpyRandom();
+	}
+	public MyArray zeros(int x,int y){
+		MyArray array = new MyArray(x, y);
+		for(int i=0;i<x;i++){
+			for(int j=0;j<y;j++){
+				array.set(i, j, 0.0);
+			}
+		}
+		return array;
+	}
+	public MyArray dot(MyArray x,MyArray y){
+		return x.mult(y);
+	}
+}

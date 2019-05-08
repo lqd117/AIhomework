@@ -1,0 +1,11 @@
+
+public class MyArray {
+	private double[][] array;
+	public MyArray(int x,int y){
+		this.array = new double[x][y];
+	}
+	public void set(int i,int j,double k){
+		this.array[i][j] = k;
+	}
+	
+}

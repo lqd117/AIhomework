@@ -1,0 +1,19 @@
+
+public class MyArray {
+	private double[][] array;
+	public MyArray(int x,int y){
+		this.array = new double[x][y];
+	}
+	public void set(int i,int j,double k){
+		this.array[i][j] = k;
+	}
+	public MyArray mult(double x){
+		for(int i=0;i<this.array.length;i++){
+			for(int j=0;j<this.array[i].length;j++){
+				this.array[i][j] *= x;
+			}
+		}
+		return this;
+	}
+	
+}

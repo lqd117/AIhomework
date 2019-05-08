@@ -1,0 +1,21 @@
+import java.util.Map;
+
+import org.apache.commons.jexl2.JexlContext;
+import org.apache.commons.jexl2.JexlEngine;
+import org.apache.commons.jexl2.MapContext;
+
+class StringToExpression {
+	public static Object invokeMethod(String jexlExp,
+										Map<String,Object> map){
+		JexlEngine jexl=new JexlEngine();
+		org.apache.commons.jexl2.Expression e = jexl.createExpression(jexlExp);
+		JexlContext jc = new MapContext();
+		for(String key:map.keySet()){
+			jc.set(key, map.get(key));
+		}
+		if(null==((org.apache.commons.jexl2.Expression) e).evaluate(jc)){
+			return null;
+		}	
+		return ((org.apache.commons.jexl2.Expression) e).evaluate(jc);
+	 }
+}

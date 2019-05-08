@@ -1,0 +1,44 @@
+
+public class MyArray {
+	private double[][] array;
+	public MyArray(int x,int y){
+		this.array = new double[x][y];
+	}
+	public void set(int i,int j,double k){
+		this.array[i][j] = k;
+	}
+	public MyArray mult(double x){
+		for(int i=0;i<this.array.length;i++){
+			for(int j=0;j<this.array[i].length;j++){
+				this.array[i][j] *= x;
+			}
+		}
+		return this;
+	}
+	public MyArray add(MyArray y){
+		for(int i=0;i<this.array.length;i++){
+			for(int j=0;j<this.array[i].length;j++){
+				this.array[i][j] += y.getNumber(i%y.getRows(), j%y.getColumns());
+			}
+		}
+		return this;
+	}
+	public double getNumber(int x,int y){
+		return this.array[x][y];
+	}
+	public int getRows(){
+		return this.array.length;
+	}
+	public int getColumns(){
+		return this.array[0].length;
+	}
+	public void display(){
+		for(int i=0;i<this.array.length;i++){
+			for(int j=0;j<this.array[i].length;j++){
+				System.out.print(this.array[i][j]);
+				System.out.print(' ');
+			}
+			System.out.println();
+		}
+	}
+}

@@ -1,0 +1,5 @@
+public class MyMath{
+	public static int abs(){
+		return 2;
+	}
+}

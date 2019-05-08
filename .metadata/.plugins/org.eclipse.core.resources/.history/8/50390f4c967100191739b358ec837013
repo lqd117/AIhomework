@@ -1,0 +1,8 @@
+
+public class MyArray {
+	private int[][] array;
+	public MyArray(int x,int y){
+		this.array = new int[x][y];
+	}
+	
+}

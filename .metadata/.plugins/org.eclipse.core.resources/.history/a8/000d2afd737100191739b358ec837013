@@ -1,0 +1,48 @@
+import java.beans.Expression;
+import java.util.HashMap;
+import java.util.Map;
+import java.lang.Math;
+import java.math.MathContext;
+import java.time.Year;
+
+import org.apache.commons.jexl2.JexlContext;
+import org.apache.commons.jexl2.JexlEngine;
+import org.apache.commons.jexl2.MapContext;
+
+
+
+public class Main {
+	
+
+	public static void main(String[] args){
+		System.out.println("1111");
+		Map<String, Object> map = new HashMap<>();
+	    map.put("x",(int)-1);
+	    map.put("System.out", System.out);
+	    map.put("math", new MyMath());
+	    System.out.println(new MyMath());
+	    String expression = "math.abs(x)";
+	    Integer y = (Integer) DyMethodUtil.invokeMethod(expression, map);
+	    System.out.println(y);
+	}
+}
+class MyMath{
+	public static int abs(int x){
+		return Math.abs(x);
+	}
+}
+
+class DyMethodUtil {
+	 public static Object invokeMethod(String jexlExp,Map<String,Object> map){
+	  JexlEngine jexl=new JexlEngine();
+	  org.apache.commons.jexl2.Expression e = jexl.createExpression(jexlExp);
+	  JexlContext jc = new MapContext();
+	  for(String key:map.keySet()){
+	   jc.set(key, map.get(key));
+	  }
+	  if(null==((org.apache.commons.jexl2.Expression) e).evaluate(jc)){
+	   return null;
+	  }
+	  return ((org.apache.commons.jexl2.Expression) e).evaluate(jc);
+	 }
+	}

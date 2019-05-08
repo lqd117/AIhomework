@@ -1,0 +1,20 @@
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Map;
+
+public class MyNeuralNetwork {
+	
+	public static Map<String, int[][]> initializeParametersDeep(int[] layer_dims){
+		/**
+		 * 参数：
+		 * layer_dims -- 表示每层单元个数的一维数组
+		 * 
+		 * 返回值：
+		 * parameters -- 用于存放参数的字典 "W1","b1",...,"WL","bL"
+		 * 		Wl -- 大小为 (layer_dims[l], layer_dims[l-1])的矩阵
+		 * 		bl -- 大小为 (layer_dims[l], 1)的偏差向量
+		 */
+		
+		return null;
+	}
+}

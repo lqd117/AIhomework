@@ -1,0 +1,155 @@
+import java.beans.Expression;
+import java.nio.charset.Charset;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.apache.commons.jexl3.JexlArithmetic;
+import org.apache.commons.jexl3.JexlContext;
+import org.apache.commons.jexl3.JexlEngine;
+import org.apache.commons.jexl3.JexlExpression;
+import org.apache.commons.jexl3.JexlInfo;
+import org.apache.commons.jexl3.JexlScript;
+import org.apache.commons.jexl3.JxltEngine;
+import org.apache.commons.jexl3.MapContext;
+import org.apache.commons.jexl3.introspection.JexlUberspect;
+
+public class Main {
+
+	public static void main(String[] args){
+		Map<String,Object> map=new HashMap<String,Object>(); 
+		map.put("a","hello world"); 
+		String expression="System.out.println(a)"; 
+		DyMethodUtil.invokeMethod(expression,map);
+	}
+}
+class DyMethodUtil {
+	 
+	 public static Object invokeMethod(String jexlExp,Map<String,Object> map){
+	  JexlEngine jexl= new JexlEngine() {
+		
+		@Override
+		public void setProperty(JexlContext arg0, Object arg1, String arg2, Object arg3) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		@Override
+		public void setProperty(Object arg0, String arg1, Object arg2) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		@Override
+		public void setClassLoader(ClassLoader arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		@Override
+		public Object newInstance(String arg0, Object... arg1) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		
+		@Override
+		public <T> T newInstance(Class<? extends T> arg0, Object... arg1) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		
+		@Override
+		public boolean isStrict() {
+			// TODO Auto-generated method stub
+			return false;
+		}
+		
+		@Override
+		public boolean isSilent() {
+			// TODO Auto-generated method stub
+			return false;
+		}
+		
+		@Override
+		public boolean isDebug() {
+			// TODO Auto-generated method stub
+			return false;
+		}
+		
+		@Override
+		public boolean isCancellable() {
+			// TODO Auto-generated method stub
+			return false;
+		}
+		
+		@Override
+		public Object invokeMethod(Object arg0, String arg1, Object... arg2) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		
+		@Override
+		public JexlUberspect getUberspect() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		
+		@Override
+		public Object getProperty(JexlContext arg0, Object arg1, String arg2) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		
+		@Override
+		public Object getProperty(Object arg0, String arg1) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		
+		@Override
+		public Charset getCharset() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		
+		@Override
+		public JexlArithmetic getArithmetic() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		
+		@Override
+		public JexlScript createScript(JexlInfo arg0, String arg1, String[] arg2) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		
+		@Override
+		public JxltEngine createJxltEngine(boolean arg0, int arg1, char arg2, char arg3) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		
+		@Override
+		public JexlExpression createExpression(JexlInfo arg0, String arg1) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		
+		@Override
+		public void clearCache() {
+			// TODO Auto-generated method stub
+			
+		}
+	} ;
+	  JexlExpression e = jexl.createExpression(jexlExp);
+	  JexlContext jc = new MapContext();
+	  for(String key:map.keySet()){
+	   jc.set(key, map.get(key));
+	  }
+	  if(null==e.evaluate(jc)){
+	   return "";
+	  }
+	  return e.evaluate(jc);
+	 }
+	 
+	}
