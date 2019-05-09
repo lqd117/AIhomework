@@ -1,3 +1,6 @@
+import javax.security.auth.x500.X500Principal;
+
+import org.apache.commons.math3.analysis.function.Multiply;
 
 public class MyArray {
 	private double[][] array;
@@ -7,22 +10,57 @@ public class MyArray {
 	public void set(int i,int j,double k){
 		this.array[i][j] = k;
 	}
+	
 	public MyArray mult(double x){
+		MyArray result = new MyArray(this.getRows(), this.getColumns());
 		for(int i=0;i<this.array.length;i++){
 			for(int j=0;j<this.array[i].length;j++){
-				this.array[i][j] *= x;
+				result.set(i, j, this.getNumber(i, j)*x);
 			}
 		}
-		return this;
+		return result;
 	}
+	
+	public MyArray getOpposite(){
+		MyArray result = new MyArray(this.getRows(), this.getColumns());
+		for(int i=0;i<result.getRows();i++){
+			for(int j=0;j<result.getColumns();j++){
+				result.set(i, j, -this.getNumber(i, j));
+			}
+		}
+		return result;
+	}
+	
+	public MyArray add(double x){
+		MyArray result = new MyArray(this.getRows(), this.getColumns());
+		for(int i=0;i<result.getRows();i++){
+			for(int j=0;j<result.getColumns();j++){
+				result.set(i, j, this.getNumber(i, j)+x);
+			}
+		}
+		return result;
+	}
+	
 	public MyArray add(MyArray y){
+		MyArray result = new MyArray(this.getRows(), this.getColumns());
 		for(int i=0;i<this.array.length;i++){
 			for(int j=0;j<this.array[i].length;j++){
-				this.array[i][j] += y.getNumber(i%y.getRows(), j%y.getColumns());
+				result.set(i, j, this.getNumber(i, j)+y.getNumber(i%y.getRows(), j%y.getColumns()));
 			}
 		}
-		return this;
+		return result;
 	}
+	
+	public MyArray getT(){
+		MyArray result = new MyArray(this.getColumns(), this.getRows());
+		for(int i=0;i<result.getRows();i++){
+			for(int j=0;j<result.getColumns();j++){
+				result.set(i, j, this.getNumber(j, i));
+			}
+		}
+		return result;
+	}
+	
 	public double getNumber(int x,int y){
 		return this.array[x][y];
 	}
