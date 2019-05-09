@@ -39,4 +39,32 @@ public class MyNumPy {
 		return array;
 	}
 	
+	public MyArray divide(MyArray x,MyArray y){
+		MyArray result = new MyArray(x.getRows(), x.getColumns());
+		for(int i=0;i<result.getRows();i++){
+			for(int j=0;j<result.getColumns();j++){
+				result.set(i, j, x.getNumber(i, j)/y.getNumber(i, j));
+			}
+		}
+		return result;
+	}
+	
+ 	public MyArray sum(MyArray x,int axis){
+		if(axis == 1){
+			MyArray result = new MyArray(x.getRows(), 1);
+			for(int i=0;i<result.getRows();i++){
+				result.set(i, 0, 0);
+			}
+			for(int i=0;i<result.getRows();i++){
+				for(int j=0;j<x.getColumns();j++){
+					result.set(i, 0, result.getNumber(i, 0) + x.getNumber(i, j));
+				}
+			}
+			return result;
+		}
+		return null;
+	}
+	
+
+
 }

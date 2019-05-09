@@ -10,6 +10,7 @@ import java.time.Year;
 import org.apache.commons.jexl2.JexlContext;
 import org.apache.commons.jexl2.JexlEngine;
 import org.apache.commons.jexl2.MapContext;
+import org.apache.commons.math3.analysis.function.Multiply;
 
 import MyTuple.ThreeTuple;
 import MyTuple.TwoTuple;
@@ -123,7 +124,191 @@ public class Main {
 //		AL.set(0, 0, 0.8);AL.set(0, 1, 0.9);AL.set(0, 2, 0.4);
 //		double cost = myNeuralNetwork.compute_cost(AL, Y);
 //		System.out.println(cost);
+	
+			
+//		MyArray dZ = new MyArray(1, 2);
+//		dZ.set(0, 0, 1.62434536);dZ.set(0, 1, -0.61175641);
+//		MyArray A_prev = new MyArray(3, 2);
+//		A_prev.set(0, 0, -0.52817175);A_prev.set(0, 1, -1.07296862);
+//		A_prev.set(1, 0, 0.86540763);A_prev.set(1, 1, -2.3015387);
+//		A_prev.set(2, 0, 1.74481176);A_prev.set(2, 1, -0.7612069);
+//		
+//		MyArray W = new MyArray(1, 3);
+//		W.set(0, 0, 0.3190391);W.set(0, 1, -0.24937038);W.set(0, 2, 1.46210794);
+//		
+//		MyArray b = new MyArray(1, 1);
+//		b.set(0, 0, -2.06014071);
+//		
+//		ThreeTuple<MyArray, MyArray, MyArray> threeTuple = 
+//				new ThreeTuple<MyArray, MyArray, MyArray>(A_prev, W, b);
+//		
+//		threeTuple = myNeuralNetwork.linear_backward(dZ, threeTuple);
+//		threeTuple.getFirst().display();
+//		threeTuple.getSecond().display();
+//		threeTuple.getThird().display();
 		
+		
+//		MyArray dAL = new MyArray(1, 2);
+//		dAL.set(0, 0, -0.41675785);dAL.set(0, 1, -0.05626683);
+//		
+//		MyArray A_prev = new MyArray(3, 2);
+//		A_prev.set(0, 0, -2.1361961);A_prev.set(0, 1, 1.64027081);
+//		A_prev.set(1, 0, -1.79343559);A_prev.set(1, 1, -0.84174737);
+//		A_prev.set(2, 0, 0.50288142);A_prev.set(2, 1, -1.24528809);
+//		
+//		MyArray W = new MyArray(1, 3);
+//		W.set(0, 0, -1.05795222);W.set(0, 1, -0.90900761);W.set(0, 2, 0.55145404);
+//		
+//		MyArray b = new MyArray(1, 1);
+//		b.set(0, 0, 2.29220801);
+//		
+//		ThreeTuple<MyArray, MyArray, MyArray> linear_cache = new ThreeTuple<MyArray, MyArray, MyArray>(A_prev, W, b);
+//		
+//		MyArray activation_cache = new MyArray(1, 2);
+//		activation_cache.set(0, 0, 0.04153939);activation_cache.set(0, 1, -1.11792545);
+//		
+//		TwoTuple<ThreeTuple<MyArray, MyArray, MyArray>, MyArray> linear_activation_cache = 
+//				new TwoTuple<ThreeTuple<MyArray,MyArray,MyArray>, MyArray>(linear_cache, activation_cache);
+//		
+//		ThreeTuple<MyArray, MyArray, MyArray> result = 
+//				myNeuralNetwork.linear_activation_backward(dAL, linear_activation_cache, "sigmoid");
+//		System.out.println("sigmoid");
+//		result.getFirst().display();
+//		result.getSecond().display();
+//		result.getThird().display();
+//		System.out.println("relu");
+//		result = myNeuralNetwork.linear_activation_backward(dAL, linear_activation_cache, "relu");
+//		result.getFirst().display();
+//		result.getSecond().display();
+//		result.getThird().display();
+		
+		
+//		MyArray AL = new MyArray(1, 2);
+//		AL.set(0, 0, 1.78862847);AL.set(0, 1, 0.43650985);
+//		MyArray Y_assess = new MyArray(1, 2);
+//		Y_assess.set(0, 0, 1);Y_assess.set(0, 1, 0);
+//		
+//		MyArray A = new MyArray(4, 2);
+//		A.set(0, 0, 0.09649747);A.set(0, 1, -1.8634927);
+//		A.set(1, 0, -0.2773882);A.set(1, 1, -0.35475898);
+//		A.set(2, 0, -0.08274148);A.set(2, 1, -0.62700068);
+//		A.set(3, 0, -0.04381817);A.set(3, 1, -0.47721803);
+//		
+//		MyArray W = new MyArray(3, 4);
+//		W.set(0, 0, -1.31386475);W.set(0, 1, 0.88462238);W.set(0, 2, 0.88131804);W.set(0, 3, 1.70957306);
+//		W.set(1, 0, 0.05003364);W.set(1, 1, -0.40467741);W.set(1, 2, -0.54535995);W.set(1, 3, -1.54647732);
+//		W.set(2, 0, 0.98236743);W.set(2, 1, -1.10106763);W.set(2, 2, -1.18504653);W.set(2, 3, -0.2056499);
+//		
+//		MyArray b = new MyArray(3, 1);
+//		b.set(0, 0, 1.48614836);
+//		b.set(1, 0, 0.23671627);
+//		b.set(2, 0, -1.02378514);
+//		
+//		MyArray z = new MyArray(3, 2);
+//		z.set(0, 0, -0.7129932);z.set(0, 1, 0.62524497);
+//		z.set(1, 0, -0.16051336);z.set(1, 1, -0.76883635);
+//		z.set(2, 0, -0.23003072);z.set(2, 1, 0.74505627);
+//		
+//		
+//		TwoTuple<ThreeTuple<MyArray, MyArray, MyArray>, MyArray> current_caches = 
+//				new TwoTuple<ThreeTuple<MyArray,MyArray,MyArray>, MyArray>(new ThreeTuple<MyArray, MyArray, MyArray>(A, W, b), z );
+//		
+//		ArrayList<TwoTuple<ThreeTuple<MyArray, MyArray, MyArray>, MyArray>> caches = 
+//				new ArrayList<>();
+//		caches.add(current_caches);
+//		
+//		A = new MyArray(3, 2);
+//		A.set(0, 0, 1.97611078);A.set(0, 1, -1.24412333);
+//		A.set(1, 0, -0.62641691);A.set(1, 1, -0.80376609);
+//		A.set(2, 0, -2.41908317);A.set(2, 1, -0.92379202);
+//		
+//		W = new MyArray(1, 3);
+//		W.set(0, 0, -1.02387576);W.set(0, 1, 1.12397796);W.set(0, 2, -0.13191423);
+//		
+//		b = new MyArray(1, 1);
+//		b.set(0, 0, -1.62328545);
+//		
+//		z = new MyArray(1, 2);
+//		z.set(0, 0, 0.64667545);z.set(0, 1, -0.35627076);
+//		
+//		
+//		current_caches = 
+//				new TwoTuple<ThreeTuple<MyArray,MyArray,MyArray>, MyArray>(new ThreeTuple<MyArray, MyArray, MyArray>(A, W, b), z );
+//		
+//		caches.add(current_caches);
+//		
+//		Map<String, MyArray> grads = myNeuralNetwork.L_model_backward(AL, Y_assess, caches);
+//		for(String key:grads.keySet()){
+//			System.out.println(key);
+//			grads.get(key).display();
+//		}
+		
+//		Map<String, MyArray> parameters = new HashMap<>();
+//		MyArray W1 = new MyArray(3, 4);
+//		W1.set(0, 0, -0.41675785);W1.set(0, 1, -0.05626683);W1.set(0, 2, -2.1361961);W1.set(0, 3, 1.64027081);
+//		W1.set(1, 0, -1.79343559);W1.set(1, 1, -0.84174737);W1.set(1, 2, 0.50288142);W1.set(1, 3, -1.24528809);
+//		W1.set(2, 0, -1.05795222);W1.set(2, 1, -0.90900761);W1.set(2, 2, 0.55145404);W1.set(2, 3, 2.29220801);
+//		
+//		MyArray b1 = new MyArray(3, 1);
+//		b1.set(0, 0, 0.04153939);
+//		b1.set(1, 0, -1.11792545);
+//		b1.set(2, 0, 0.53905832);
+//		
+//		MyArray W2 = new MyArray(1, 3);
+//		W2.set(0, 0, -0.5961597);W2.set(0, 1, -0.0191305);W2.set(0, 2, 1.17500122);
+//		
+//		MyArray b2 = new MyArray(1, 1);
+//		b2.set(0, 0, -0.74787095);
+//		
+//		MyArray dW1 = new MyArray(3, 4);
+//		dW1.set(0, 0, 1.78862847);dW1.set(0, 1, 0.43650985);dW1.set(0, 2, 0.09649747);dW1.set(0, 3, -1.8634927);
+//		dW1.set(1, 0, -0.2773882);dW1.set(1, 1, -0.35475898);dW1.set(1, 2, -0.08274148);dW1.set(1, 3, -0.62700068);
+//		dW1.set(2, 0, -0.04381817);dW1.set(2, 1, -0.47721803);dW1.set(2, 2, -1.31386475);dW1.set(2, 3, 0.88462238);
+//		
+//		MyArray db1 = new MyArray(3, 1);
+//		db1.set(0, 0, 0.88131804);
+//		db1.set(1, 0, 1.70957306);
+//		db1.set(2, 0, 0.05003364);
+//		
+//		MyArray dW2 = new MyArray(1, 3);
+//		dW2.set(0, 0, -0.40467741);dW2.set(0, 1, -0.54535995);dW2.set(0, 2, -1.54647732);
+//		
+//		MyArray db2 = new MyArray(1, 1);
+//		db2.set(0, 0, 0.98236743);
+//		
+//		parameters.put("W1", W1);parameters.put("b1", b1);
+//		parameters.put("W2", W2);parameters.put("b2", b2);
+//		
+//		Map<String,MyArray> grads = new HashMap<>();
+//		
+//		grads.put("dW1", dW1);grads.put("db1", db1);
+//		grads.put("dW2", dW2);grads.put("db2", db2);
+//		
+//		parameters = myNeuralNetwork.update_parameters(parameters, grads, 0.1);
+//		c
+		
+		
+		MyArray xArray = new MyArray(1, 100);
+		MyArray yArray = new MyArray(1, 100);
+		for(int i=0;i<10;i++){
+			double x = Math.random()*5;
+			xArray.set(0, i, x);
+			yArray.set(0, i, x*x);
+		}
+		int[] layers = new int[5];
+		layers[0] = 1;layers[1] = 20;layers[2] = 7;layers[3] = 5;layers[4] = 1;
+		Map<String, MyArray> parameters = myNeuralNetwork.initialize_parameters_deep(layers);
+		double learning_rate = 0.1;
+		for(int i=0;i<200;i++){
+			TwoTuple<MyArray, ArrayList<TwoTuple<ThreeTuple<MyArray, MyArray, MyArray>, MyArray>>> temp = myNeuralNetwork.L_model_forward(xArray, parameters);
+			MyArray AL = temp.getFirst();
+			ArrayList<TwoTuple<ThreeTuple<MyArray, MyArray, MyArray>, MyArray>> caches = temp.getSecond();
+			System.out.println(myNeuralNetwork.compute_cost(AL, yArray));
+			Map<String, MyArray> grads = myNeuralNetwork.L_model_backward(AL, yArray, caches);
+			parameters = myNeuralNetwork.update_parameters(parameters, grads, learning_rate);
+			
+
+		}
 	}
 }
 
