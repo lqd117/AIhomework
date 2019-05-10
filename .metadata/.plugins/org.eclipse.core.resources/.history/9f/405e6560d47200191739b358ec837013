@@ -1,0 +1,11 @@
+
+
+public class Controller {
+	private String myExpression = "x*x";
+	
+	public void initMyExpression(String temp){
+		this.myExpression = temp;
+	}
+	
+	
+}

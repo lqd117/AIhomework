@@ -1,0 +1,55 @@
+import java.util.ArrayList;
+import java.util.Map;
+
+import MyTuple.ThreeTuple;
+import MyTuple.TwoTuple;
+
+public class Controller {
+	private MyNeuralNetwork myNeuralNetwork = new MyNeuralNetwork();
+	private String expression;
+	private MyExpression myExpression = new MyExpression();
+	private int dataNumber,batchNumber,learning_rate;//样本数，迭代数
+	private MyArray data, Y;
+	private int[] layers;
+	
+	public Controller(String tempExpression,int tempDataNumber,int tempBatchNUmber, int rate,int[] tempLayers){
+		this.learning_rate = rate;
+		this.layers = tempLayers;
+		this.dataNumber = tempDataNumber;
+		this.batchNumber = tempBatchNUmber;
+		this.expression = tempExpression;
+		this.myExpression.init(this.expression);
+		this.data = new MyArray(1, this.dataNumber);
+		this.Y = new MyArray(1, this.dataNumber);
+		this.createData();
+		this.run();
+	}
+	
+	public void run(){
+		Map<String, MyArray> parameters = myNeuralNetwork.initialize_parameters_deep(layers);
+		TwoTuple<MyArray, ArrayList<TwoTuple<ThreeTuple<MyArray, MyArray, MyArray>, MyArray>>> temp;
+		ArrayList<TwoTuple<ThreeTuple<MyArray, MyArray, MyArray>, MyArray>> caches;
+		Map<String, MyArray> grads;
+		for(int i=0;i<this.batchNumber;i++){
+			temp = myNeuralNetwork.L_model_forward(this.data, parameters);
+			MyArray AL = temp.getFirst();
+			caches = temp.getSecond();
+			double cost = myNeuralNetwork.compute_cost(AL, this.Y);
+			System.out.println(cost);
+			grads = myNeuralNetwork.L_model_backward(AL, this.Y, caches);
+			parameters = myNeuralNetwork.update_parameters(parameters, grads, this.learning_rate);
+			
+
+		}
+	}
+	
+	public void createData(){
+		for(int i=0;i<this.data.getColumns();i++){
+			double x = Math.random()*5;
+			this.data.set(0, i, x);
+			this.Y.set(0, i, this.myExpression.getYByX(x));
+		}
+	}
+
+	
+}

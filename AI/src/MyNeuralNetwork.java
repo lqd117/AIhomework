@@ -12,9 +12,9 @@ import MyTuple.TwoTuple;
 
 public class MyNeuralNetwork {
 	
-	private static MyNumPy np = new MyNumPy();
+	private MyNumPy np = new MyNumPy();
 	
-	public static Map<String, MyArray> initialize_parameters_deep(int[] layer_dims){
+	public Map<String, MyArray> initialize_parameters_deep(int[] layer_dims){
 		/**
 		 * Arguments:
 		 * layer_dims -- array (list) containing the dimensions of each layer in our network
@@ -34,7 +34,7 @@ public class MyNeuralNetwork {
 		return parameters;
 	}
 
-	public static TwoTuple<MyArray, ThreeTuple<MyArray, MyArray, MyArray>> 
+	public TwoTuple<MyArray, ThreeTuple<MyArray, MyArray, MyArray>> 
 									linear_forward(MyArray A,MyArray W,MyArray b){
 		
 		/**
@@ -57,7 +57,7 @@ public class MyNeuralNetwork {
 		return twoTuple;
 	}
 
-	public static TwoTuple<MyArray, TwoTuple<ThreeTuple<MyArray, MyArray, MyArray>, MyArray>>
+	public TwoTuple<MyArray, TwoTuple<ThreeTuple<MyArray, MyArray, MyArray>, MyArray>>
 									linear_activation_forward(MyArray A_prev,MyArray W,
 											MyArray b,String activation){
 		/**
@@ -100,7 +100,7 @@ public class MyNeuralNetwork {
 		return twoTuple;
 	}
 	
-	public static TwoTuple<MyArray, ArrayList<TwoTuple<ThreeTuple<MyArray, MyArray, MyArray>, MyArray>>>
+	public TwoTuple<MyArray, ArrayList<TwoTuple<ThreeTuple<MyArray, MyArray, MyArray>, MyArray>>>
 									L_model_forward(MyArray X, Map<String, MyArray> parameters) {
 		/**
 		 * Implement forward propagation for the [LINEAR->RELU]*(L-1)->LINEAR->SIGMOID computation
@@ -143,7 +143,7 @@ public class MyNeuralNetwork {
 		return result;
 	}
 	
-	public static double compute_cost(MyArray AL,MyArray Y){
+	public double compute_cost(MyArray AL,MyArray Y){
 		/**
 		 * Implement the cost function defined by equation (7).
 		 * 
@@ -171,7 +171,7 @@ public class MyNeuralNetwork {
 		return cost;
 	}
 	
-	public static ThreeTuple<MyArray, MyArray, MyArray> 
+	public ThreeTuple<MyArray, MyArray, MyArray> 
 									linear_backward(MyArray dZ,ThreeTuple<MyArray, MyArray, MyArray> cache){
 		/**
 		 * Implement the linear portion of backward propagation for a single layer (layer l)
@@ -196,7 +196,7 @@ public class MyNeuralNetwork {
 		return threeTuple;
 	}
 
-	public static ThreeTuple<MyArray, MyArray, MyArray> linear_activation_backward(MyArray dA,
+	public ThreeTuple<MyArray, MyArray, MyArray> linear_activation_backward(MyArray dA,
 			TwoTuple<ThreeTuple<MyArray, MyArray, MyArray>, MyArray> cache,String activation){
 		/**
 		 * Implement the backward propagation for the LINEAR->ACTIVATION layer.
@@ -233,7 +233,7 @@ public class MyNeuralNetwork {
 	}
 	
 	
-	public static Map<String, MyArray> L_model_backward(
+	public Map<String, MyArray> L_model_backward(
 			MyArray AL,MyArray Y,ArrayList<TwoTuple<ThreeTuple<MyArray, MyArray, MyArray>, MyArray>> caches){
 		/**
 		 * Implement the backward propagation for the [LINEAR->RELU] * (L-1) -> LINEAR -> SIGMOID group
@@ -276,7 +276,7 @@ public class MyNeuralNetwork {
 		return grads;
 	}
 	
-	public static Map<String, MyArray> update_parameters(
+	public Map<String, MyArray> update_parameters(
 			Map<String, MyArray> parameters,Map<String, MyArray> grads,double learning_rate ){
 		/**
 		 * Update parameters using gradient descent
@@ -302,7 +302,7 @@ public class MyNeuralNetwork {
 		return parameters;
 	}
 	
-	public static TwoTuple<MyArray, MyArray> sigmoid(MyArray Z){
+	public TwoTuple<MyArray, MyArray> sigmoid(MyArray Z){
 		/**
 		 * Implements the sigmoid activation in numpy
 		 * 
@@ -325,7 +325,7 @@ public class MyNeuralNetwork {
 		return twoTuple;
 	}
 
-	public static TwoTuple<MyArray, MyArray> relu(MyArray Z){
+	public TwoTuple<MyArray, MyArray> relu(MyArray Z){
 		/**
 		 * Implement the RELU function.
 		 * 
@@ -348,7 +348,7 @@ public class MyNeuralNetwork {
 		return twoTuple;
 	}
 
-	public static MyArray relu_backward(MyArray dA,MyArray cache){
+	public MyArray relu_backward(MyArray dA,MyArray cache){
 		/**
 		 * Implement the backward propagation for a single RELU unit.
 		 * 
@@ -373,7 +373,7 @@ public class MyNeuralNetwork {
 		return dZ;
 	}
 
-	public static MyArray sigmoid_backward(MyArray dA,MyArray cache){
+	public MyArray sigmoid_backward(MyArray dA,MyArray cache){
 		/**
 		 * Implement the backward propagation for a single SIGMOID unit.
 		 * 

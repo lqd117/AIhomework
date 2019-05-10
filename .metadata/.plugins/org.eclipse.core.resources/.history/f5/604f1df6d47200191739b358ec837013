@@ -1,0 +1,24 @@
+
+
+public class Controller {
+	private String myExpression = "x*x";
+	private int dataNumber = 1000;
+	private MyArray data, Y;
+	
+	public Controller(){
+		this.data = new MyArray(1, this.dataNumber);
+		this.Y = new MyArray(1, this.dataNumber);
+		this.createData();
+	}
+	
+	public void createData(){
+		for(int i=0;i<this.data)
+	}
+	
+	public void initMyExpression(String temp){
+		this.myExpression = temp;
+	}
+	
+	
+	
+}

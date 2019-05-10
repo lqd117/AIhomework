@@ -1,0 +1,28 @@
+
+
+public class Controller {
+	private String expression;
+	private MyExpression myExpression;
+	private int dataNumber = 1000;
+	private MyArray data, Y;
+	
+	public Controller(String temp,int number){
+		this.dataNumber = number;
+		this.expression = temp;
+		this.myExpression.init(this.expression);
+		this.data = new MyArray(1, this.dataNumber);
+		this.Y = new MyArray(1, this.dataNumber);
+		this.createData();
+	}
+	
+	public void createData(){
+		for(int i=0;i<this.data.getColumns();i++){
+			double x = Math.random()*5;
+			this.data.set(0, i, x);
+			this.Y.set(0, i, this.myExpression.getYByX(x));
+		}
+		
+	}
+
+	
+}

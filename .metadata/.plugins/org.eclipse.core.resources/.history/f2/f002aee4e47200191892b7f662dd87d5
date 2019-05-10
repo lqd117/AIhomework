@@ -1,0 +1,51 @@
+import java.awt.Window;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.RenderingHints.Key;
+import java.awt.Toolkit;
+import java.beans.Expression;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
+import java.lang.Math;
+import java.math.MathContext;
+import java.time.Year;
+
+import org.apache.commons.jexl2.JexlContext;
+import org.apache.commons.jexl2.JexlEngine;
+import org.apache.commons.jexl2.MapContext;
+import org.apache.commons.math3.analysis.function.Multiply;
+
+import MyTuple.ThreeTuple;
+import MyTuple.TwoTuple;
+
+
+
+public class Main {
+	
+	public static void main(String[] args){
+		JFrame jFrame = new JFrame("Éñ¾­ÍøÂç");
+		jFrame.setVisible(true);
+		jFrame.setSize(1080, 720);
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		jFrame.setLocation(screenSize.width/2-1080/2, screenSize.height/2-720/2);
+		jFrame.setResizable(false);
+		
+		JPanel topJPanel = new JPanel();
+		JTextField expression = new JTextField("x*x");
+		topJPanel.setVisible(true);
+		topJPanel.setBounds(50, 50, 50, 50);
+		
+		jFrame.add(topJPanel, BorderLayout.NORTH);
+		
+	}
+}
+
+
+
