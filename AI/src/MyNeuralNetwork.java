@@ -24,11 +24,10 @@ public class MyNeuralNetwork {
 		 * 		Wl -- weight matrix of shape (layer_dims[l], layer_dims[l-1])
 		 * 		bl -- bias vector of shape (layer_dims[l], 1)
 		 */
-		np.random.setSeed(3);
 		Map<String, MyArray> parameters = new HashMap<>();
 		int L = layer_dims.length;
 		for(int i=1;i<L;i++){
-			parameters.put("W"+String.valueOf(i), np.random.randn(layer_dims[i],layer_dims[i-1]).mult(0.1));
+			parameters.put("W"+String.valueOf(i), np.random.randn(layer_dims[i],layer_dims[i-1]).mult(Math.sqrt(1/layer_dims[i-1])));
 			parameters.put("b"+String.valueOf(i), np.zeros(layer_dims[i],1));
 		}
 		return parameters;
@@ -128,7 +127,7 @@ public class MyNeuralNetwork {
 				}
 			}
 			twoTuple = linear_activation_forward(
-					A_prev, parameters.get("W"+String.valueOf(i)), parameters.get("b"+String.valueOf(i)), "relu");
+					A_prev, parameters.get("W"+String.valueOf(i)), parameters.get("b"+String.valueOf(i)), "sigmoid");
 			A = twoTuple.getFirst();
 			cache = twoTuple.getSecond();
 			caches.add(cache);
@@ -260,14 +259,14 @@ public class MyNeuralNetwork {
 		
 		MyArray dAL = AL.add(Y.getOpposite());
 		TwoTuple<ThreeTuple<MyArray, MyArray, MyArray>, MyArray> current_cache = caches.get(L-1);
-		ThreeTuple<MyArray, MyArray, MyArray> threeTuple = linear_activation_backward(dAL, current_cache, "relu");
+		ThreeTuple<MyArray, MyArray, MyArray> threeTuple = linear_activation_backward(dAL, current_cache, "sigmoid");
 		grads.put("dA"+String.valueOf(L-1), threeTuple.getFirst());
 		grads.put("dW"+String.valueOf(L), threeTuple.getSecond());
 		grads.put("db"+String.valueOf(L), threeTuple.getThird());
 		
 		for(int i=L-2;i>=0;i--){
 			current_cache = caches.get(i);
-			threeTuple = linear_activation_backward(grads.get("dA"+String.valueOf(i+1)), current_cache, "relu");
+			threeTuple = linear_activation_backward(grads.get("dA"+String.valueOf(i+1)), current_cache, "sigmoid");
 			grads.put("dA"+String.valueOf(i), threeTuple.getFirst());
 			grads.put("dW"+String.valueOf(i+1), threeTuple.getSecond());
 			grads.put("db"+String.valueOf(i+1), threeTuple.getThird());
@@ -390,8 +389,8 @@ public class MyNeuralNetwork {
 		MyArray dZ = new MyArray(Z.getRows(), Z.getColumns());
 		for(int i=0;i<s.getRows();i++){
 			for(int j=0;j<s.getColumns();j++){
-				s.set(i, j, 1/(1+Math.exp(-Z.getNumber(i, j))));
-				dZ.set(i, j, dA.getNumber(i, j)*s.getNumber(i, j)*(1-s.getNumber(i, j)));
+				s.set(i, j, 1.0/(1.0+Math.exp(-Z.getNumber(i, j))));
+				dZ.set(i, j, dA.getNumber(i, j)*s.getNumber(i, j)*(1.0-s.getNumber(i, j)));
 			}
 		}
 		return dZ;

@@ -54,7 +54,7 @@ public class Main {
 		JPanel topJPanel = new JPanel();
 		
 		JTextArea expressionName = new JTextArea("表达式: ");
-		JTextField expression = new JTextField("x*x",10);
+		JTextField expression = new JTextField("math.tanh(x)",10);
 		
 		JTextArea layerName = new JTextArea("层数和节点数: ");
 		JTextField layer = new JTextField("1,10,1",10);
@@ -66,7 +66,7 @@ public class Main {
 		JTextField batch = new JTextField("800",10);
 		
 		JTextArea learning_rate_name = new JTextArea("学习速率");
-		JTextField learning_rate = new JTextField("0.03",10);
+		JTextField learning_rate = new JTextField("1",10);
 		
 		
 		JButton button = new JButton("确定");

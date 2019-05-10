@@ -52,11 +52,11 @@ public class Controller {
 	
 	public void createData(){
 		for(int i=0;i<this.data.getColumns();i++){
-			double x = ((double)i-(double)this.data.getColumns()/2)/((double)this.data.getColumns()/4);
+			double x = (double)i*2.0/this.data.getColumns();
 			this.data.set(0, i, x);
 			this.Y.set(0, i, this.myExpression.getYByX(x));
 		}
-		this.data.display();
+		this.data.display();	
 		this.Y.display();
 	}
 
