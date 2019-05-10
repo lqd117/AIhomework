@@ -239,17 +239,17 @@ class Loss extends JPanel{
 		graphics.drawLine(40, 40, 40, 280);
 		graphics.drawLine(40, 40, 35, 45);
 		graphics.drawLine(40, 40, 45, 45);
-		graphics.drawString("0.02", 20, 220);
+		graphics.drawString("0.5", 20, 220);
 		graphics.drawLine(45, 220, 40, 220);
-		graphics.drawString("0.04", 20, 160);
+		graphics.drawString("1.0", 20, 160);
 		graphics.drawLine(45, 160, 40, 160);
-		graphics.drawString("0.06", 20, 100);
+		graphics.drawString("1.5", 20, 100);
 		graphics.drawLine(45, 100, 40, 100);
 		
 		
 		for(int i=0;i<this.x.size();i++){
 			int tempx = (i+1)/2 + 40;
-			int tempy = (int) (280 - this.x.get(i)*3000-1);
+			int tempy = (int) (280 - this.x.get(i)*120-1);
 			graphics.drawOval(tempx, tempy, 1, 1);
 		}
 	}
